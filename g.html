@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stone Paper Scissors</title>
+</head>
+<body>
+  <h2>Stone Paper Scissors Game</h2>
+
+  <!-- Buttons for user choice -->
+  <button onclick="playGame('stone')">Stone</button>
+  <button onclick="playGame('paper')">Paper</button>
+  <button onclick="playGame('scissors')">Scissors</button>
+
+  <!-- Result display -->
+  <p id="result"></p>
+
+  <script>
+    function playGame(userChoice) {
+      const choices = ["stone", "paper", "scissors"];
+      const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+      let result = `You chose: ${userChoice} <br> Computer chose: ${computerChoice} <br>`;
+
+      if (userChoice === computerChoice) {
+        result += "Result: It's a Tie!";
+      } else if (
+        (userChoice === "stone" && computerChoice === "scissors") ||
+        (userChoice === "paper" && computerChoice === "stone") ||
+        (userChoice === "scissors" && computerChoice === "paper")
+      ) {
+        result += "Result: You Win!";
+      } else {
+        result += "Result: Computer Wins!";
+      }
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
